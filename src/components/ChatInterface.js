@@ -4,11 +4,16 @@ import './ChatInterface.css';
 
 // 初始消息
 const initialMessages = [
-  { id: 1, type: 'bot', content: '你好！我是AI助手，很高兴为你服务。' }
+  { id: 1, type: 'bot', content: '请开始你的牛逼聊天之旅～～～～～' }
 ];
 
 function ChatInterface() {
-  const [messages, setMessages] = useState(initialMessages);
+  const [messages, setMessages] = useState([
+    {
+      type: 'bot',
+      content: '感谢使用AI智能聊天BOT！'
+    }
+  ]);
   const [inputText, setInputText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
