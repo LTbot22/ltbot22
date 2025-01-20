@@ -5,13 +5,12 @@ const loadDialogues = async () => {
     dating: await import('./dialogues/dating.json'),
     work: await import('./dialogues/work.json'),
     hobby: await import('./dialogues/hobby.json'),
-    profile: await import('./dialogues/profile.json')  // 添加个人信息文件
+    profile: await import('./dialogues/profile.json')
   };
 
   // 合并所有对话数据
   const allDialogues = {};
   Object.values(dialogueFiles).forEach(file => {
-    // 遍历每个文件中的所有对话配置
     Object.values(file.default).forEach(dialogue => {
       Object.assign(allDialogues, { [dialogue.category]: dialogue });
     });
@@ -23,16 +22,28 @@ const loadDialogues = async () => {
 let dialogueCache = null;
 
 // 简化的匹配函数
-export function findBestMatch(input) {
-  // 假设有一个匹配逻辑
-  const response = matchLogic(input);
-
-  if (!response) {
-    return "智能聊天数据模型正在训练中，这只是个测试版，请勿正式使用！";
+export const findBestMatch = async (input) => {
+  // 懒加载对话数据
+  if (!dialogueCache) {
+    dialogueCache = await loadDialogues();
   }
 
-  return response;
-}
+  input = input.toLowerCase().trim();
+  
+  // 遍历所有对话配置
+  for (const config of Object.values(dialogueCache)) {
+    if (config.keywords && config.keywords.some(keyword => 
+      input.includes(keyword.toLowerCase())
+    )) {
+      return config.responses[
+        Math.floor(Math.random() * config.responses.length)
+      ];
+    }
+  }
+  
+  // 如果没有匹配到任何关键词，返回默认消息
+  return "智能聊天数据模型正在训练中，这只是个测试版，请勿正式使用！";
+};
 
 // 获取某个类别的所有对话
 export const getDialoguesByCategory = (category) => {
