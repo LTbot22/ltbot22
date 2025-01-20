@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkltbot22=self.webpackChunkltbot22||[]).push([[607],{607:e=>{e.exports=JSON.parse('{"work":{"responses":["最近工作挺忙的，不过还好啦","刚完成一个项目，松了口气"],"keywords":["工作","项目","公司"],"category":"work"}}')}}]);
