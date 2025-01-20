@@ -1,11 +1,12 @@
 import React from 'react';
 import ChatInterface from './components/ChatInterface';
 import './App.css';
-import techBg from './assets/images/tech-bg.jpg';
 
 function App() {
   return (
-    <div className="app" style={{ backgroundImage: `url(${techBg})` }}>
+    <div className="app" style={{ 
+      backgroundImage: `url('https://images.unsplash.com/photo-1518770660439-4636190af475')`
+    }}>
       <header className="app-header">
         <h1>AI聊天BOT（测试版）</h1>
       </header>
@@ -14,4 +15,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;
