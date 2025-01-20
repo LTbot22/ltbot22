@@ -64,6 +64,15 @@ function ChatInterface() {
     }
   };
 
+  // 添加触摸反馈
+  const handleTouchStart = (e) => {
+    e.currentTarget.style.opacity = '0.7';
+  };
+
+  const handleTouchEnd = (e) => {
+    e.currentTarget.style.opacity = '1';
+  };
+
   return (
     <div className="chat-container">
       <div className="messages-container">
@@ -94,8 +103,15 @@ function ChatInterface() {
           onChange={(e) => setInputText(e.target.value)}
           placeholder="输入消息..."
           disabled={isLoading}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         />
-        <button type="submit" disabled={isLoading}>
+        <button 
+          type="submit" 
+          disabled={isLoading}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           {isLoading ? '发送中...' : '发送'}
         </button>
       </form>

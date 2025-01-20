@@ -193,26 +193,129 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* 移动端适配 */
+/* 移动端适配优化 */
 @media (max-width: 768px) {
-  .app-header {
-    padding: 1rem;
+  .app-content {
+    padding: 4rem 0.5rem 3rem;
+    height: calc(100vh - 7rem);
+    overflow-y: auto;
   }
 
-  .app-content {
-    padding: 6rem 1rem 4rem;
+  .app-header {
+    padding: 0.5rem;
+    height: 3.5rem;
+  }
+
+  .app-header h1 {
+    font-size: 1.2rem;
+  }
+
+  .app-nav {
+    gap: 0.5rem;
+    margin-left: 0;
+  }
+
+  .nav-item {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  .theme-toggle {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
+    margin-left: 0.5rem;
   }
 
   .chat-container {
-    width: 95%;
-    padding: 1rem;
+    width: 100%;
+    margin: 0;
+    padding: 0.5rem;
+    height: calc(100vh - 7rem);
+    border-radius: 12px;
+  }
+
+  .messages-container {
+    padding: 0.5rem;
+    height: calc(100vh - 12rem);
+    max-height: none;
+  }
+
+  .input-container {
+    position: sticky;
+    bottom: 0;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+  }
+
+  .app-footer {
+    height: 2.5rem;
+    padding: 0.5rem 0;
   }
 }
 
 /* 小屏幕适配 */
 @media (max-width: 480px) {
+  .app-header h1 {
+    display: none;
+  }
+
+  .input-container {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .input-container input {
+    flex: 1;
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  .input-container button {
+    width: auto;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  .message {
+    max-width: 85%;
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+  }
+}
+
+/* 处理软键盘弹出的情况 */
+@media (max-height: 600px) {
   .app-content {
-    padding: 7rem 0.5rem 4rem;
+    height: calc(100vh - 6rem);
+  }
+
+  .chat-container {
+    height: calc(100vh - 6rem);
+  }
+
+  .messages-container {
+    height: calc(100vh - 11rem);
+  }
+
+  .app-footer {
+    display: none;
+  }
+}
+
+/* 横屏模式优化 */
+@media (max-height: 500px) and (orientation: landscape) {
+  .app-content {
+    padding-top: 3.5rem;
+  }
+
+  .app-header {
+    padding: 0.5rem 1rem;
+  }
+
+  .messages-container {
+    max-height: calc(100vh - 11rem);
   }
 }
 

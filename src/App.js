@@ -30,6 +30,23 @@ function App() {
     };
   }, [theme]);
 
+  // 添加视口高度调整
+  useEffect(() => {
+    const adjustViewportHeight = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+
+    window.addEventListener('resize', adjustViewportHeight);
+    window.addEventListener('orientationchange', adjustViewportHeight);
+    adjustViewportHeight();
+
+    return () => {
+      window.removeEventListener('resize', adjustViewportHeight);
+      window.removeEventListener('orientationchange', adjustViewportHeight);
+    };
+  }, []);
+
   // 渲染内容函数
   const renderContent = () => {
     switch (activeMenu) {
