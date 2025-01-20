@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>智能对话助手</h1>
+        <h1>牛逼爱聊天</h1>
       </header>
       <ChatInterface />
     </div>
