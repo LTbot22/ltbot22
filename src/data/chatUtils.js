@@ -23,27 +23,16 @@ const loadDialogues = async () => {
 let dialogueCache = null;
 
 // 简化的匹配函数
-export const findBestMatch = async (input) => {
-  // 懒加载对话数据
-  if (!dialogueCache) {
-    dialogueCache = await loadDialogues();
+export function findBestMatch(input) {
+  // 假设有一个匹配逻辑
+  const response = matchLogic(input);
+
+  if (!response) {
+    return "智能聊天数据模型正在训练中，这只是个测试版，请勿正式使用！";
   }
 
-  input = input.toLowerCase().trim();
-  
-  // 遍历所有对话配置
-  for (const config of Object.values(dialogueCache)) {
-    if (config.keywords && config.keywords.some(keyword => 
-      input.includes(keyword.toLowerCase())
-    )) {
-      return config.responses[
-        Math.floor(Math.random() * config.responses.length)
-      ];
-    }
-  }
-  
-  return "数据库没有可匹配信息，请自行回答！！！😍";
-};
+  return response;
+}
 
 // 获取某个类别的所有对话
 export const getDialoguesByCategory = (category) => {
