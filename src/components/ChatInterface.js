@@ -35,16 +35,16 @@ function ChatInterface() {
     setInputText('');
     setIsLoading(true);
 
-    try {
-      // 等待响应
-      const response = await findBestMatch(inputText);
+    // 增加延迟时间到 1.5 秒
+    await new Promise(resolve => setTimeout(resolve, 1500));
 
+    try {
+      const response = await findBestMatch(inputText);
       const botResponse = {
         id: messages.length + 2,
         type: 'bot',
         content: response
       };
-
       setMessages(prev => [...prev, botResponse]);
     } catch (error) {
       console.error('Error:', error);

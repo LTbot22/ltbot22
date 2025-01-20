@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkltbot22=self.webpackChunkltbot22||[]).push([[274],{274:e=>{e.exports=JSON.parse('{"hobby":{"responses":["我喜欢看电影和画画","周末经常去咖啡馆看书"],"keywords":["兴趣","爱好","喜欢"],"category":"hobby"}}')}}]);
